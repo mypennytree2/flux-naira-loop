@@ -28,8 +28,8 @@ export default function AuthPage() {
           password,
           options: {
             data: { full_name: fullName },
-            emailRedirectTo: window.location.origin,
-          },
+            emailRedirectTo: window.location.origin
+          }
         });
         if (error) throw error;
 
@@ -71,14 +71,14 @@ export default function AuthPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="max-w-md"
-        >
+          className="max-w-md">
+          
           <h1 className="font-heading text-6xl font-800 text-primary mb-6">FLUX</h1>
           <p className="font-heading text-3xl font-700 text-foreground mb-4">
             Borrow Naira.<br />Keep your crypto.
           </p>
-          <p className="text-muted-foreground text-sm leading-relaxed">
-            Powered by a CBN Lending Licence · Tax-free borrowing · Instant approval
+          <p className="text-muted-foreground text-sm leading-relaxed">Tax-free borrowing · Instant approval
+
           </p>
         </motion.div>
       </div>
@@ -89,8 +89,8 @@ export default function AuthPage() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="w-full max-w-md"
-        >
+          className="w-full max-w-md">
+          
           {/* Mobile branding */}
           <div className="lg:hidden mb-8 text-center">
             <h1 className="font-heading text-4xl font-800 text-primary mb-2">FLUX</h1>
@@ -102,54 +102,54 @@ export default function AuthPage() {
               <button
                 onClick={() => setIsSignUp(false)}
                 className={`flex-1 py-2 text-sm font-medium rounded-lg transition-colors ${
-                  !isSignUp ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
-                }`}
-              >
+                !isSignUp ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground'}`
+                }>
+                
                 Sign In
               </button>
               <button
                 onClick={() => setIsSignUp(true)}
                 className={`flex-1 py-2 text-sm font-medium rounded-lg transition-colors ${
-                  isSignUp ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground'
-                }`}
-              >
+                isSignUp ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-foreground'}`
+                }>
+                
                 Sign Up
               </button>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <AnimatePresence mode="wait">
-                {isSignUp && (
-                  <motion.div
-                    key="signup-fields"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="space-y-4 overflow-hidden"
-                  >
+                {isSignUp &&
+                <motion.div
+                  key="signup-fields"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="space-y-4 overflow-hidden">
+                  
                     <div>
                       <Label htmlFor="fullName">Full Name</Label>
                       <Input
-                        id="fullName"
-                        value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
-                        placeholder="Amaka Okonkwo"
-                        required
-                        className="mt-1.5 bg-secondary border-border"
-                      />
+                      id="fullName"
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
+                      placeholder="Amaka Okonkwo"
+                      required
+                      className="mt-1.5 bg-secondary border-border" />
+                    
                     </div>
                     <div>
                       <Label htmlFor="phone">Phone Number</Label>
                       <Input
-                        id="phone"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        placeholder="+234 800 000 0000"
-                        className="mt-1.5 bg-secondary border-border"
-                      />
+                      id="phone"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="+234 800 000 0000"
+                      className="mt-1.5 bg-secondary border-border" />
+                    
                     </div>
                   </motion.div>
-                )}
+                }
               </AnimatePresence>
 
               <div>
@@ -161,8 +161,8 @@ export default function AuthPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
                   required
-                  className="mt-1.5 bg-secondary border-border"
-                />
+                  className="mt-1.5 bg-secondary border-border" />
+                
               </div>
 
               <div>
@@ -175,27 +175,27 @@ export default function AuthPage() {
                   placeholder="••••••••"
                   required
                   minLength={6}
-                  className="mt-1.5 bg-secondary border-border"
-                />
+                  className="mt-1.5 bg-secondary border-border" />
+                
               </div>
 
               <Button
                 type="submit"
                 className="w-full flux-glow-btn font-heading font-600"
-                disabled={loading}
-              >
-                {loading ? (
-                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent" />
-                ) : isSignUp ? 'Create Account' : 'Sign In'}
+                disabled={loading}>
+                
+                {loading ?
+                <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent" /> :
+                isSignUp ? 'Create Account' : 'Sign In'}
               </Button>
             </form>
           </div>
 
-          <p className="mt-6 text-center text-xs text-muted-foreground">
-            CBN Licensed Lending · Flux MFB · RC 1234567
-          </p>
+          
+
+          
         </motion.div>
       </div>
-    </div>
-  );
+    </div>);
+
 }
