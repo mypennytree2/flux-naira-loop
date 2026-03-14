@@ -9,8 +9,12 @@ import Auth from "./pages/Auth";
 import Onboarding from "./pages/Onboarding";
 import Dashboard from "./pages/Dashboard";
 import Borrow from "./pages/Borrow";
+import Loans from "./pages/Loans";
 import LoanDetail from "./pages/LoanDetail";
 import Wallet from "./pages/Wallet";
+import Exchange from "./pages/Exchange";
+import FluxPrivate from "./pages/FluxPrivate";
+import Settings from "./pages/Settings";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 
@@ -28,8 +32,12 @@ const App = () => (
             <Route path="/onboarding" element={<Onboarding />} />
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="/borrow" element={<ProtectedRoute><Borrow /></ProtectedRoute>} />
+            <Route path="/loans" element={<ProtectedRoute><Loans /></ProtectedRoute>} />
             <Route path="/loans/:id" element={<ProtectedRoute><LoanDetail /></ProtectedRoute>} />
             <Route path="/wallet" element={<ProtectedRoute><Wallet /></ProtectedRoute>} />
+            <Route path="/exchange" element={<ProtectedRoute><Exchange /></ProtectedRoute>} />
+            <Route path="/flux-private" element={<ProtectedRoute><FluxPrivate /></ProtectedRoute>} />
+            <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
             <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>

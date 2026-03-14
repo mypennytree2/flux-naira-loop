@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -34,11 +34,26 @@
     --warning-foreground: 224 71% 4%;
     --warning-dim: 41 86% 55%;
 
+    --info: 212 100% 67%;
+    --info-foreground: 224 71% 4%;
+    --info-dim: 212 100% 67%;
+
+    --purple: 265 100% 78%;
+    --purple-foreground: 224 71% 4%;
+    --purple-dim: 265 100% 78%;
+
+    --surface2: 215 19% 14%;
+    --surface3: 215 16% 17%;
+
     --border: 0 0% 100% / 0.07;
+    --border-hover: 0 0% 100% / 0.14;
+    --border-accent: 162 100% 42% / 0.3;
     --input: 0 0% 100% / 0.07;
     --ring: 162 100% 42%;
 
     --radius: 0.75rem;
+    --radius-lg: 1.25rem;
+    --radius-xl: 1.75rem;
 
     --sidebar-background: 215 28% 7%;
     --sidebar-foreground: 213 31% 96%;
@@ -74,12 +89,33 @@
     @apply bg-secondary rounded-xl;
   }
 
+  .flux-surface2 {
+    background: hsl(var(--surface2));
+    border-radius: var(--radius);
+  }
+
   .flux-glow-btn {
     @apply transition-all duration-200;
   }
 
   .flux-glow-btn:hover {
     transform: translateY(-1px);
-    box-shadow: 0 0 20px hsl(162 100% 42% / 0.15);
+    box-shadow: 0 0 20px hsl(162 100% 42% / 0.25);
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .flux-skeleton {
+    background: linear-gradient(90deg, hsl(var(--surface2)) 25%, hsl(var(--surface3)) 50%, hsl(var(--surface2)) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+    border-radius: var(--radius);
   }
 }

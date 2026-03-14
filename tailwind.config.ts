@@ -38,8 +38,20 @@ export default {
         warning: {
           DEFAULT: "hsl(var(--warning))",
           foreground: "hsl(var(--warning-foreground))",
-          dim: "hsl(var(--warning-dim) / 0.1)",
+          dim: "hsl(var(--warning-dim) / 0.08)",
         },
+        info: {
+          DEFAULT: "hsl(var(--info))",
+          foreground: "hsl(var(--info-foreground))",
+          dim: "hsl(var(--info-dim) / 0.08)",
+        },
+        purple: {
+          DEFAULT: "hsl(var(--purple))",
+          foreground: "hsl(var(--purple-foreground))",
+          dim: "hsl(var(--purple-dim) / 0.08)",
+        },
+        surface2: "hsl(var(--surface2))",
+        surface3: "hsl(var(--surface3))",
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
@@ -71,6 +83,8 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xl: "var(--radius-lg)",
+        "2xl": "var(--radius-xl)",
       },
       keyframes: {
         "accordion-down": {
