@@ -1,10 +1,11 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import { Home, Landmark, Wallet } from 'lucide-react';
+import { Home, Landmark, Wallet, CreditCard } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const items = [
   { to: '/dashboard', icon: Home, label: 'Home' },
   { to: '/borrow', icon: Landmark, label: 'Borrow' },
+  { to: '/loans', icon: CreditCard, label: 'Loans' },
   { to: '/wallet', icon: Wallet, label: 'Wallet' },
 ];
 
@@ -15,7 +16,7 @@ export default function MobileNav() {
     <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-card md:hidden">
       <div className="flex items-center justify-around py-2">
         {items.map(({ to, icon: Icon, label }) => {
-          const active = location.pathname.startsWith(to);
+          const active = location.pathname === to || (to !== '/dashboard' && location.pathname.startsWith(to));
           return (
             <NavLink
               key={to}
