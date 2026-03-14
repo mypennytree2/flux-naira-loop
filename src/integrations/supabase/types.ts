@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      b2b_partners: {
+        Row: {
+          api_key_hash: string
+          created_at: string
+          id: string
+          name: string
+          pricing_model: string
+          revenue_share: number | null
+          status: string
+          total_loans: number
+          total_volume: number
+        }
+        Insert: {
+          api_key_hash: string
+          created_at?: string
+          id?: string
+          name: string
+          pricing_model?: string
+          revenue_share?: number | null
+          status?: string
+          total_loans?: number
+          total_volume?: number
+        }
+        Update: {
+          api_key_hash?: string
+          created_at?: string
+          id?: string
+          name?: string
+          pricing_model?: string
+          revenue_share?: number | null
+          status?: string
+          total_loans?: number
+          total_volume?: number
+        }
+        Relationships: []
+      }
       collateral_deposits: {
         Row: {
           amount: number
@@ -75,6 +111,149 @@ export type Database = {
             columns: ["user_id"]
             isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      exchange_corridors: {
+        Row: {
+          avg_daily_vol: number
+          created_at: string
+          from_currency: string
+          id: string
+          is_active: boolean
+          max_daily: number
+          min_amount: number
+          spread_pct: number
+          to_currency: string
+          vol_threshold: number
+        }
+        Insert: {
+          avg_daily_vol?: number
+          created_at?: string
+          from_currency: string
+          id?: string
+          is_active?: boolean
+          max_daily: number
+          min_amount: number
+          spread_pct?: number
+          to_currency: string
+          vol_threshold?: number
+        }
+        Update: {
+          avg_daily_vol?: number
+          created_at?: string
+          from_currency?: string
+          id?: string
+          is_active?: boolean
+          max_daily?: number
+          min_amount?: number
+          spread_pct?: number
+          to_currency?: string
+          vol_threshold?: number
+        }
+        Relationships: []
+      }
+      kyc_submissions: {
+        Row: {
+          bvn: string | null
+          created_at: string
+          id: string
+          id_type: string | null
+          id_url: string | null
+          nin: string | null
+          notes: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          selfie_url: string | null
+          status: string
+          tier: number
+          user_id: string
+        }
+        Insert: {
+          bvn?: string | null
+          created_at?: string
+          id?: string
+          id_type?: string | null
+          id_url?: string | null
+          nin?: string | null
+          notes?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          selfie_url?: string | null
+          status?: string
+          tier: number
+          user_id: string
+        }
+        Update: {
+          bvn?: string | null
+          created_at?: string
+          id?: string
+          id_type?: string | null
+          id_url?: string | null
+          nin?: string | null
+          notes?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          selfie_url?: string | null
+          status?: string
+          tier?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "kyc_submissions_reviewed_by_fkey"
+            columns: ["reviewed_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "kyc_submissions_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      loan_events: {
+        Row: {
+          created_at: string
+          description: string
+          event_type: string
+          id: string
+          loan_id: string
+          metadata: Json | null
+          signers: string[] | null
+          txn_hash: string | null
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          event_type: string
+          id?: string
+          loan_id: string
+          metadata?: Json | null
+          signers?: string[] | null
+          txn_hash?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          event_type?: string
+          id?: string
+          loan_id?: string
+          metadata?: Json | null
+          signers?: string[] | null
+          txn_hash?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "loan_events_loan_id_fkey"
+            columns: ["loan_id"]
+            isOneToOne: false
+            referencedRelation: "loans"
             referencedColumns: ["id"]
           },
         ]
